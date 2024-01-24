@@ -28,11 +28,13 @@ Pour accéder à cette application, voici les étapes :
     cd pokedex
     ```
 
-3. Installez les dépendances nécessaires avec la commande :
+3. Installez les dépendances* nécessaires avec la commande :
 
     ```bash
     npm install
     ```
+
+*Les dépendances se trouvent dans le fichier `package.json` et seront installées automatiquement lors de l'exécution de la commande.
 
 ## Lancement de l'Application
 

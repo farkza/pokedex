@@ -17,12 +17,12 @@ const Pokedex = () => {
   const [sortOrder, setSortOrder] = useState('asc');
   const [selectedFilter, setSelectedFilter] = useState('id');
   const [searchTerm, setSearchTerm] = useState('');
-  const [isModalVisible, setModalVisibility] = useState(false);
+  const [isModalVisible, setModalVisibility] = useState(false); // État pour la modal
   const [selectedPokemon, setSelectedPokemon] = useState(null);
-  const [isShinyImage, setIsShinyImage] = useState(false); // État pour suivre l'image affichée
+  const [isShinyImage, setIsShinyImage] = useState(false); // État pour suivre les shiny
   const [evolvedFrom, setEvolvedFrom] = useState(null);
   const [evolvesTo, setEvolvesTo] = useState(null);
-  const [language, setLanguage] = useState('fr'); // Par défaut, la langue est le français  
+  const [language, setLanguage] = useState('fr'); // Par défaut en français 
 
   useEffect(() => {
     const fetchData = async () => {
@@ -87,7 +87,7 @@ const Pokedex = () => {
     setModalVisibility(true);
     setIsShinyImage(false);
 
-    // Vérifiez s'il y a une évolution antérieure pour le Pokémon
+    // Vérifie s'il y a une évolution antérieure pour le Pokémon
     if (selectedPokemon.evolvedFrom) {
       const evolutionFromKeys = Object.keys(selectedPokemon.evolvedFrom);
       const evolvedFromData = evolutionFromKeys.map((evolutionKey) => ({
@@ -100,7 +100,7 @@ const Pokedex = () => {
       setEvolvedFrom(null);
     }
 
-    // Vérifiez s'il y a des évolutions futures pour le Pokémon
+    // Vérifie s'il y a des évolutions futures pour le Pokémon
     if (selectedPokemon.evolvesTo) {
       const evolutionToKeys = Object.keys(selectedPokemon.evolvesTo);
       const evolvesToData = evolutionToKeys.map((evolutionKey) => ({
@@ -114,21 +114,23 @@ const Pokedex = () => {
     }
   };
 
-  // Fonction pour basculer entre l'image régulière et l'image shiny
+  // Bascule à l'image shiny
   const toggleShinyImage = () => {
     setIsShinyImage(!isShinyImage);
   };
 
+  // Repasse la visibilité de la Modal à false
   const closeModal = () => {
     setModalVisibility(false);
   };
 
-  // Fonction pour changer la langue
+  // Change la langue
   const changeLanguage = () => {
-  const newLanguage = language === 'fr' ? 'en' : 'fr'; // Basculer entre français et anglais
+  const newLanguage = language === 'fr' ? 'en' : 'fr'; // Bascule entre français et anglais
   setLanguage(newLanguage);
   };
 
+  // Traduit les statistiques des pokémons
   const statTranslations = {
     hp: { fr: 'pv', en: 'hp' },
     atk: { fr: 'atq', en: 'atk' },
@@ -176,7 +178,7 @@ const Pokedex = () => {
         />
 
         <div class="dropdown">
-          <img src={filter} alt="Drapeau" id="dropdownBtn" class="dropdown-btn" />
+          <img src={filter} alt="Drapeau" id="dropdownBtn" className="dropdown-btn" />
           <div class="dropdown-content" id="dropdownContent">
             <button onClick={toggleSortOrder}>
               {sortOrder === 'asc' ? (language === 'fr' ? 'Tri croissant' : 'Ascending order') : (language === 'fr' ? 'Tri décroissant' : 'Descending order')}
@@ -191,7 +193,7 @@ const Pokedex = () => {
         <button onClick={resetFilters} className='resetFilters'>{language === 'fr' ? 'Réinitialiser les filtres' : 'Reset filters'}</button>
         <div className="input-search">
         <img className="search-button" src={image_Search} alt="Search Logo" />
-        <input type="text" placeholder={language === 'fr' ? 'Quel Pokémon recherchez-vous ?' : 'What Pokémon are you looking for?'}
+        <input type="text" placeholder={language === 'fr' ? 'Rechercher un Pokémon' : 'Search for a Pokemon'}
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
