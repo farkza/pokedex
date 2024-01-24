@@ -1,3 +1,5 @@
+Paul CARION B3 DevOps
+
 # Pokedex ReactJS
 
 Ce projet ReactJS a été mis en place dans le cadre d'un projet scolaire. Les consignes détaillées sont disponibles dans le fichier PDF à la racine du projet.
