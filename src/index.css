@@ -1,0 +1,215 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+.header img {
+  max-width: 200px;
+  height: auto;
+}
+
+.filters-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.filters-container .selected_Generation,
+.filters-container .selected_Type,
+.filters-container .input-search {
+  margin: 10px; 
+}
+
+@media screen and (max-width: 500px) {
+  .filters-container .selected_Generation,
+  .filters-container .selected_Type,
+  .filters-container .dropdown {
+    width: 95%; 
+  }
+  .flag_img{
+    z-index: 0;
+  }
+}
+
+.input-search {
+  position: relative;
+  height: 50px;
+  max-width: 300px;
+  width: 100%;
+  background: #F5F6F6;
+  border-radius: 5px;
+  margin: 0 20px;
+}
+
+.input-search input {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  font-size: 12px;
+  font-weight: 400;
+  border: none;
+  padding: 0 155px 0 65px;
+  background-color: transparent;
+}
+
+@media screen and (max-width: 500px) {
+  .filters-container {
+    flex-direction: column; 
+    align-items: flex-start;
+  }
+
+  .input-search {
+    height: 66px;
+    margin: 10px 0; 
+  }
+
+  .input-search input {
+    padding: 0 112px 0 50px;
+  }
+}
+
+.search-button{
+  position: absolute;
+  top: 15px;
+  left: 25px;
+  width: 20px;
+  height: auto;
+}
+
+.HeadText{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500; 
+  color: #707070; 
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.modal-content {
+  background: #fff; 
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 80%;
+  max-height: 80%;
+  overflow: auto; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.modal-content svg{
+  margin-left: 100%;
+  transform: translate(-100%);
+  cursor: pointer;
+  }
+  .modal-content img{
+      cursor: pointer;
+  }
+
+.card img{
+  width: 275px;
+  height: 300px;
+}
+
+.flag_img{
+  width: 40px;
+  height: auto;
+  z-index: 1;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-btn {
+  width: 30px;
+  height: auto;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content button {
+  width: 100%;
+  padding: 8px 16px;
+  text-align: left;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.resetFilters {
+  background-color: #13aa52;
+  border: 1px solid #13aa52;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  outline: none;
+  outline: 0;
+  padding: 10px 25px;
+  margin: 10px 20px;
+  text-align: center;
+  transform: translateY(0);
+  transition: transform 150ms, box-shadow 150ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.resetFilters:hover {
+  box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
+  transform: translateY(-2px);
+}
+
+.modalPokemonImg{
+  width: 200px;
+  height: auto;
+}
+
+.modalEvolvedFromPokemonImg{
+  width: 200px;
+  height: auto;
+}
+
+.modalEvolvedToPokemonImg {
+  width: 200px;
+  height: auto;
+}
+
+.ModalPokemonInfos {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+}
+
+
+
