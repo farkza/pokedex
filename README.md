@@ -1,8 +1,40 @@
-Paul CARION 
+# Pokedex ReactJS
 
-Voici mon projet Pokedex réalisé en ReactJS 
+Ce projet ReactJS a été mis en place dans le cadre d'un projet scolaire. Les consignes détaillées sont disponibles dans le fichier PDF à la racine du projet.
 
-Pour visualiser mon projet, il te suffit de télécharger mon projet, puis de te rendre dans le dossier de celui-ci et taper la commande suivante :
+## Objectif du Projet
 
-### `npm start`
+L'objectif de ce projet est de créer une application Pokedex simple en utilisant ReactJS. Le Pokedex permet aux utilisateurs d'accéder à l'ensemble des Pokémons présent dans le Pokédex avec s'il le veulent des filtres spécifiques pour trouver les pokémons de leurs choix.
 
+## Consignes du Projet
+
+Pour accéder aux consignes de ce projet, veuillez consulter le fichier PDF situé à la racine de mon projet.
+
+## Installation
+
+Pour accéder à cette application, voici les étapes :
+
+1. Clonez le repository vers votre machine locale en utilisant la commande suivante :
+
+    ```bash
+    git clone https://github.com/farkza/pokedex.git
+    ```
+
+2. Accédez au répertoire du projet :
+
+    ```bash
+    cd pokedex
+    ```
+
+3. Installez les dépendances nécessaires avec la commande :
+
+    ```bash
+    npm install
+    ```
+
+## Lancement de l'Application
+
+Une fois l'installation des dépendances terminée, lancez l'application en utilisant la commande suivante :
+
+```bash
+npm start
