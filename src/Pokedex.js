@@ -7,6 +7,11 @@ import US_Flag from './img/united-states.png';
 import FR_Flag from './img/france.png';
 import filter from './img/filter.png'
 import Select from "react-select";
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+library.add(faArrowLeft);
 
 const Pokedex = () => {
   const [pokemonList, setPokemonList] = useState([]);
@@ -80,6 +85,12 @@ const Pokedex = () => {
     setSelectedType('allTypes');
     setSelectedFilter('id');
     setSortOrder('asc');
+  };
+
+  const getBackgroundColorClass = () => {
+    const firstTypeId = selectedPokemon.types[0];
+    const firstTypeInfo = types.find(type => type.id === firstTypeId);
+    return firstTypeInfo ? firstTypeInfo.name.en.toLowerCase() : '';
   };
 
   const handleCardClick = (selectedPokemon) => {
@@ -225,54 +236,66 @@ const Pokedex = () => {
 
       {isModalVisible && selectedPokemon && (
       <div className='modal-overlay'>
-        <div className='modal-content'>
-          <svg onClick={closeModal} width="25" height="25">
-            <line x1="0" y1="0" x2="25" y2="25" stroke="black" fill='black' />
-            <line x1="0" y1="25" x2="25" y2="0" stroke="black" fill='black' />
-          </svg>
+        <div className={`modal-content ${getBackgroundColorClass()}`}>
+        <button className="back-btn-modal" onClick={closeModal}>
+          <FontAwesomeIcon icon={faArrowLeft} />
+        </button>
 
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <div style={{ marginRight: '20px' }}>
+          <div className='header-modal'>
               <img
                 src={isShinyImage ? selectedPokemon.image_shiny : selectedPokemon.image}
                 alt={selectedPokemon.name && selectedPokemon.name[language]}
                 onClick={toggleShinyImage} // Appel de la fonction pour basculer l'image
                 className='modalPokemonImg'
               />
-            </div>
             
             <div className='ModalPokemonInfos'>
               <div>
-                <p>#{selectedPokemon.id}</p>
+                <p className='pokemon-id-modal'>#{selectedPokemon.id}</p>
               </div>
               <div>
-                <p>{selectedPokemon.name && selectedPokemon.name[language]}</p>
+                <p className='pokemon-name-modal'>{selectedPokemon.name && selectedPokemon.name[language]}</p>
               </div>
               
               <div>
-              {/* Vérifie d'abord si selectedPokemon.types existe avant de mapper */}
-              {selectedPokemon.types && selectedPokemon.types.length > 0 && (
-                <p>{selectedPokemon.types.map(typeId => {
-                  const type = types.find(type => type.id === typeId);
-                  return type && type.name[language];
-                }).join(', ')}</p>
-              )}
+                {/* Vérifie d'abord si selectedPokemon.types existe avant de mapper */}
+                {selectedPokemon.types && selectedPokemon.types.length > 0 && (
+                  <div className='type-modal-container'>
+                    {selectedPokemon.types.map(typeId => {
+                      const type = types.find(type => type.id === typeId);
+                      return (
+                        type && (
+                          <div key={type.id} className="type-container">
+                            <img className='type-img' src={type.image} alt={type.name[language]} />
+                            <p>{type.name[language]}</p>
+                          </div>
+                        )
+                      );
+                    })}
+                  </div>
+                )}
               </div>
+
             </div>
 
           </div>
 
           <div>
-            <p>{language === 'fr' ? 'Taille' : 'Height'}: {selectedPokemon.height} m</p>
-            <p>{language === 'fr' ? 'Poids' : 'Weight'}: {selectedPokemon.weight} kg</p>
-            <p>{language === 'fr' ? 'Statistiques' : 'Stats'}:</p>
-            <ul>
-              {Object.entries(selectedPokemon.stats).map(([stat, value]) => (
-                <li key={stat}>
-                  {statTranslations[stat][language]}: {value}
-                </li>
-              ))}
-            </ul>
+            <div className="infos-pokemon-body">
+              <p>{language === 'fr' ? 'Taille' : 'Height'}: {selectedPokemon.height} m</p>
+              <p>{language === 'fr' ? 'Poids' : 'Weight'}: {selectedPokemon.weight} kg</p>
+            </div>
+
+            <div className="stats-pokemon">
+              <p>{language === 'fr' ? 'Statistiques' : 'Stats'}:</p>
+              <ul>
+                {Object.entries(selectedPokemon.stats).map(([stat, value]) => (
+                  <li key={stat}>
+                    {statTranslations[stat][language]}: {value}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
           
           {evolvedFrom && evolvedFrom.length > 0 && (
@@ -282,7 +305,7 @@ const Pokedex = () => {
                 {evolvedFrom.map((evolution) => (
                   <div key={evolution.id}>
                     <img
-                      src={`https://raw.githubusercontent.com/Yarkis01/PokeAPI/images/sprites/${evolution.id}/regular.png`} // Remplacez par la vraie URL de l'image du Pokémon
+                      src={`https://raw.githubusercontent.com/Yarkis01/PokeAPI/images/sprites/${evolution.id}/regular.png`}
                       alt={`Pokemon ${evolution.id}`}
                       className='modalEvolvedFromPokemonImg'
                     />
@@ -300,7 +323,7 @@ const Pokedex = () => {
                 {evolvesTo.map((evolution) => (
                   <div key={evolution.id}>
                     <img
-                      src={`https://raw.githubusercontent.com/Yarkis01/PokeAPI/images/sprites/${evolution.id}/regular.png`} // Remplacez par la vraie URL de l'image du Pokémon
+                      src={`https://raw.githubusercontent.com/Yarkis01/PokeAPI/images/sprites/${evolution.id}/regular.png`}
                       alt={`Pokemon ${evolution.id}`}
                       className='modalEvolvedToPokemonImg'
                     />

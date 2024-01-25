@@ -93,10 +93,9 @@
 }
 
 .modal-content {
-  background: #fff; 
   padding: 20px;
   border-radius: 5px;
-  max-width: 80%;
+  width: 60%;
   max-height: 80%;
   overflow: auto; 
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -232,5 +231,148 @@
   }
 }
 
+.header-modal{
+  display: flex;
+  align-items: center;
+  width: 50%;
+  margin: 0 auto;
+}
 
+.ModalPokemonInfos{
+  margin-top: 2vw;
+}
 
+.pokemon-id-modal{
+  color: #262626;
+}
+
+.type-modal-container{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.type-container {
+  display: flex;
+  align-items: center;
+  margin-right: 10px; 
+}
+
+.type-container img {
+  width: 30px;
+  height: auto; 
+  margin-right: 5px; 
+}
+
+.pokemon-name-modal{
+  color: white;
+  font-weight: 700;
+  margin-top: -1.2vw;
+  font-size: 32px;
+  margin-bottom: -0.8vw;
+}
+
+.back-btn-modal {
+  background: none; 
+  border: none; 
+  color: white; 
+  font-size: 24px;
+}
+
+.back-btn-modal:hover {
+  opacity: 0.8; 
+  cursor: pointer;
+}
+
+.infos-pokemon-body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center; 
+  height: 100%;
+}
+
+.infos-pokemon-body p {
+  margin: 0 10px; 
+}
+
+.stats-pokemon {
+  text-align: center;
+  margin-top: 1vw;
+}
+
+.stats-pokemon p {
+  margin: 0;
+}
+
+.stats-pokemon ul {
+  list-style: none; 
+  padding: 0; 
+}
+
+.stats-pokemon li {
+  margin: 5px 0;
+}
+
+/* Conteneur pour les informations d'évolution centrées */
+.evolution-section {
+  text-align: center;
+}
+
+/* Style pour le titre des évolutions */
+.evolution-section h3 {
+  margin: 0; /* Supprime la marge par défaut */
+}
+
+/* Style pour la chaîne d'évolution */
+.evolution-chain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; /* Permet aux éléments de passer à la ligne si nécessaire */
+}
+
+/* Style pour chaque élément d'évolution */
+.evolution-chain div {
+  margin: 10px; /* Ajoute un espacement autour de chaque élément */
+}
+
+/* Style pour l'image d'évolution */
+.modalEvolvedFromPokemonImg,
+.modalEvolvedToPokemonImg {
+  width: 80px; /* Ajustez la largeur de l'image selon vos besoins */
+  height: auto; /* Assurez-vous que la hauteur s'ajuste en proportion */
+}
+
+/* Style pour le niveau d'évolution */
+.evolution-chain p {
+  margin: 0; /* Supprime la marge par défaut */
+}
+
+/* Ajoutez des styles spécifiques pour les petits écrans (mobiles) */
+@media only screen and (max-width: 800px) {
+  .header-modal {
+    flex-direction: column; /* Affichez les éléments en colonne */
+  }
+
+  .modalPokemonImg {
+    margin-bottom: 10px; /* Ajoutez de l'espace entre l'image et l'ID sur mobile */
+  }
+
+  .ModalPokemonInfos {
+    text-align: center; /* Centrez le texte sur mobile */
+  }
+
+  .pokemon-id-modal,
+  .pokemon-name-modal {
+    margin-bottom: 5px; /* Ajoutez de l'espace entre l'ID et le nom sur mobile */
+  }
+
+  .type-modal-container {
+    display: flex;
+    flex-direction: column; /* Affichez les types en colonne sur mobile */
+  }
+
+  .type-container {
+    margin-bottom: 5px; /* Ajoutez de l'espace entre les types sur mobile */
+  }
+}
